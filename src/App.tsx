@@ -1,37 +1,36 @@
-import { useDispatch, useSelector } from "react-redux";
 import {
   decrement,
   increment,
   incrementByAmount,
 } from "./redux/counter/counterSlice";
-import { RootState } from "./redux/store";
+import { useAppDispatch, useAppSelector } from "./redux/hook";
 
 function App() {
-  const { count } = useSelector((state: RootState) => state.counter);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
+  const { count } = useAppSelector((state) => state.counter);
 
   return (
     <div className="h-screen overflow-auto flex justify-center items-center">
       <div>
         <div>
-          <h1 className="text-4xl text-center">{count}</h1>
+          <h1 className="text-6xl font-bold text-center">{count}</h1>
         </div>
-        <div className="grid grid-cols-2 gap-2 mt-3">
+        <div className="grid grid-cols-2 gap-2 mt-8">
           <button
             onClick={() => dispatch(increment())}
-            className="px-6 py-2 bg-green-500 text-white"
+            className="px-6 py-2 bg-green-600 font-semibold text-white"
           >
             Increment
           </button>
           <button
             onClick={() => dispatch(decrement())}
-            className="px-6 py-2 bg-red-500 text-white"
+            className="px-6 py-2 bg-red-600 font-semibold text-white"
           >
             Decrement
           </button>
           <button
             onClick={() => dispatch(incrementByAmount(5))}
-            className="px-6 py-2 bg-red-500 text-white col-span-2"
+            className="px-6 py-2 bg-purple-600 font-semibold text-white col-span-2"
           >
             Increment By 5
           </button>
